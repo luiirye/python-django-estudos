@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+    <h1 class="mb-4">Deletar Livro 🗑️</h1>
+
+    <div class="card border-danger">
+        <div class="card-body">
+            <p class="card-text">Tem certeza que deseja deletar o livro <strong>{{ livro.titulo }}</strong>?</p>
+            <form method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Sim, deletar</button>
+                <a href="{% url 'lista_livros' %}" class="btn btn-secondary">← Cancelar</a>
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+    <div class="card">
+        <div class="card-body">
+            <h1 class="card-title">{{ livro.titulo }}</h1>
+            <p class="card-text"><strong>Autor:</strong> {{ livro.autor }}</p>
+            <p class="card-text"><strong>Status:</strong> {{ livro.get_status_display }}</p>
+            <p class="card-text"><strong>Descrição:</strong> {{ livro.descricao }}</p>
+            <p class="card-text"><strong>Adicionado em:</strong> {{ livro.data_adicao }}</p>
+            <a href="{% url 'editar_livro' livro.pk %}" class="btn btn-warning">✏️ Editar</a>
+            <a href="{% url 'deletar_livro' livro.pk %}" class="btn btn-danger">🗑️ Deletar</a>
+        </div>
+    </div>
+
+    <a href="{% url 'lista_livros' %}" class="btn btn-secondary mt-3">← Voltar</a>
+{% endblock %}

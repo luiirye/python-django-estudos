@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+    <h1 class="mb-4">Minha Estante 📚</h1>
+
+    {% for livro in livros %}
+        <div class="card mb-3">
+            <div class="card-body">
+                <h2 class="card-title">
+                    <a href="{% url 'detalhe_livro' livro.pk %}">{{ livro.titulo }}</a>
+                </h2>
+                <p class="card-text"><strong>Autor:</strong> {{ livro.autor }}</p>
+                <p class="card-text"><strong>Status:</strong> {{ livro.get_status_display }}</p>
+                <p class="card-text">{{ livro.descricao }}</p>
+                <a href="{% url 'editar_livro' livro.pk %}" class="btn btn-sm btn-warning">✏️ Editar</a>
+                <a href="{% url 'deletar_livro' livro.pk %}" class="btn btn-sm btn-danger">🗑️ Deletar</a>
+            </div>
+        </div>
+    {% empty %}
+        <p>Nenhum livro cadastrado ainda.</p>
+    {% endfor %}
+{% endblock %}

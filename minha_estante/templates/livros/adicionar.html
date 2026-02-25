@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+    <h1 class="mb-4">Adicionar Livro 📖</h1>
+
+    <div class="card">
+        <div class="card-body">
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-success">Salvar</button>
+                <a href="{% url 'lista_livros' %}" class="btn btn-secondary">← Cancelar</a>
+            </form>
+        </div>
+    </div>
+{% endblock %}
